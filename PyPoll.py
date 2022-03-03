@@ -53,6 +53,7 @@ with open(file_to_load) as election_data:
         candidate_votes[candidate_name] += 1
 
 #creating dict to store candidate percentages in
+
 candidate_percentages = {}
 for candidate_name in candidate_votes:
     
@@ -62,12 +63,13 @@ for candidate_name in candidate_votes:
     #calculating vote percentage
     vote_percentage = round(float(votes)/float(total_votes) * 100, 1)
 
-    #printing out the percentage
+    #printing out the percentage to test
     print(f"{candidate_name}: {vote_percentage}% ({candidate_votes.get(candidate_name):,}) ")
-
+    all_votes = f"{candidate_name}: {vote_percentage}% ({candidate_votes.get(candidate_name):,}) "
+    
     #storing to dictionary for later use
     candidate_percentages.update({candidate_name:vote_percentage})
-    
+
 
 #determine winning candidate
 #grabs max values for total votes and percentage and saves them to variables
@@ -76,12 +78,34 @@ winning_candidate = max(candidate_percentages, key = candidate_percentages.get)
 winning_percentage = max(candidate_percentages.values())
 winning_total = max(candidate_votes.values())
 
-print(f"""
----------------------------
-Winner: {winning_candidate}
-Winning Vote Count: {winning_total:,}
-Winning Percentage: {winning_percentage}%
-----------------------------
-""")
+#write results to file
 
+with open(file_to_save, 'w') as txt_file:
+    
+    #creating election results and saving to file
+    election_results = (
+    f"\nElection Results\n"
+    f"-------------------------\n"
+    f"Total Votes: {total_votes:,}\n"
+    f"-------------------------\n")
+    txt_file.write(election_results)
+
+    #creating total candidate results and saving
+    for candidate_name in candidate_votes:      
+         #printing out the percentage to test
+        all_votes = f"{candidate_name}: {vote_percentage}% ({candidate_votes.get(candidate_name):,})\n"
+        txt_file.write(all_votes)
+
+    #Creating winner results
+    winner_results =(
+    f"---------------------------\n"
+    f"Winner: {winning_candidate}\n"
+    f"Winning Vote Count: {winning_total:,}\n"
+    f"Winning Percentage: {winning_percentage}%\n"
+    f"----------------------------")
+
+    #saving winner results
+    txt_file.write(winner_results)
+txt_file.close()
+election_data.close()
     
