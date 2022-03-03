@@ -106,6 +106,5 @@ with open(file_to_save, 'w') as txt_file:
 
     #saving winner results
     txt_file.write(winner_results)
-txt_file.close()
-election_data.close()
+
     
