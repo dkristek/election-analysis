@@ -1,6 +1,6 @@
 # Election Analysis
 ## Overview of Analysis
-The objective of this analysis was to use python to audit and confirm the results of a local election. The election results were provided as a CSV file. From the results; the total votes, total votes for each candidate, percent of votes for each candidate, votes by county, percentage of votes by county, largest county turnout, and the candidate with the most votes were collected and saved to a text file.
+The objective of this analysis was to use python to audit and confirm the results of a local election. The election results were provided as a CSV file. From the results; the total votes, total votes for each candidate, percent of votes for each candidate, votes by county, percentage of votes by county, largest county turnout, and the candidate with the most votes were calculated and saved to a text file.
 
 ## Election Audit Results
 The results of the election audit are listed below:
